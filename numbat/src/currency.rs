@@ -1,5 +1,6 @@
 use std::sync::{Mutex, MutexGuard, OnceLock};
 
+#[cfg(feature = "fetch-exchangerates")]
 use numbat_exchange_rates::parse_exchange_rates;
 
 #[derive(Debug)]
@@ -28,6 +29,7 @@ impl ExchangeRatesCache {
             .cloned()
     }
 
+    #[cfg(feature = "fetch-exchangerates")]
     pub fn set_from_xml(xml_content: &str) {
         EXCHANGE_RATES
             .set(Mutex::new(

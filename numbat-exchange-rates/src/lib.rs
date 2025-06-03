@@ -1,10 +1,13 @@
 use std::collections::HashMap;
 
+#[cfg(feature = "fetch-exchangerates")]
 use quick_xml::events::Event;
+#[cfg(feature = "fetch-exchangerates")]
 use quick_xml::reader::Reader;
 
 pub type ExchangeRates = HashMap<String, f64>;
 
+#[cfg(feature = "fetch-exchangerates")]
 pub fn parse_exchange_rates(xml_content: &str) -> Option<ExchangeRates> {
     let mut rates = ExchangeRates::default();
 

@@ -66,13 +66,13 @@ impl Numbat {
         }
     }
 
-    pub fn set_exchange_rates(&mut self, xml_content: &str) {
-        Context::set_exchange_rates(xml_content);
-        let _ = self
-            .ctx
-            .interpret("use units::currencies", CodeSource::Internal)
-            .unwrap();
-    }
+    // pub fn set_exchange_rates(&mut self, xml_content: &str) {
+    //     Context::set_exchange_rates(xml_content);
+    //     let _ = self
+    //         .ctx
+    //         .interpret("use units::currencies", CodeSource::Internal)
+    //         .unwrap();
+    // }
 
     fn format(&self, markup: &numbat::markup::Markup, indent: bool) -> String {
         let fmt: Box<dyn Formatter> = match self.format_type {

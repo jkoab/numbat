@@ -16,7 +16,7 @@ rust-version = "1.70"
 anyhow = "1"
 rustyline = { version = "14.0.0", features = ["derive"] }
 dirs = "5"
-numbat = { version = "1.16.0", path = "../numbat" }
+numbat = { version = "1.16.0", path = "../numbat", features = ["plotly"] }
 colored = "2"
 itertools = "0.12"
 toml = { version = "0.8.8", features = ["parse"] }

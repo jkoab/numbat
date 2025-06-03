@@ -1,4 +1,5 @@
 use compact_str::CompactString;
+#[cfg(feature = "plotly")]
 use plotly::{
     color::Rgb,
     common::{Font, Line},
@@ -6,6 +7,20 @@ use plotly::{
     Bar, Configuration, Layout, Plot, Scatter,
 };
 
+#[cfg(target_family = "wasm")]
+pub struct Plot {}
+
+#[cfg(target_family = "wasm")]
+pub fn line_plot(xs: Vec<f64>, ys: Vec<f64>, x_label: &str, y_label: &str) -> Plot {
+    Plot {}
+}
+
+#[cfg(target_family = "wasm")]
+pub fn bar_chart(values: Vec<f64>, x_labels: Vec<CompactString>, value_label: &str) -> Plot {
+    Plot {}
+}
+
+#[cfg(feature = "plotly")]
 pub fn line_plot(xs: Vec<f64>, ys: Vec<f64>, x_label: &str, y_label: &str) -> Plot {
     let x_min = xs[0];
     let x_max = xs[xs.len() - 1];
@@ -31,6 +46,7 @@ pub fn line_plot(xs: Vec<f64>, ys: Vec<f64>, x_label: &str, y_label: &str) -> Pl
     plot
 }
 
+#[cfg(feature = "plotly")]
 pub fn bar_chart(values: Vec<f64>, x_labels: Vec<CompactString>, value_label: &str) -> Plot {
     let mut plot = Plot::new();
 

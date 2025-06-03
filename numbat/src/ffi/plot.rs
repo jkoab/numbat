@@ -1,3 +1,7 @@
+#[cfg(target_family = "wasm")]
+use crate::plot::Plot;
+
+#[cfg(feature = "plotly")]
 use plotly::Plot;
 
 use super::macros::*;
@@ -89,7 +93,7 @@ fn show_plot(plot: Plot) -> CompactString {
 }
 
 #[cfg(target_family = "wasm")]
-fn show_plot(_plot: Plot) -> CompactString {
+fn show_plot(_plot: crate::plot::Plot) -> CompactString {
     // The way we could implement this would be to return plot.to_inline_html(..).
     // This would have to be retrieved on the JS side and then rendered using plotly.js.
 

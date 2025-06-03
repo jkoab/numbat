@@ -148,10 +148,12 @@ impl Context {
     }
 
     /// Fill the currency exchange rate cache. This call is blocking.
+    #[cfg(feature = "fetch-exchangerates")]
     pub fn prefetch_exchange_rates() {
         let _unused = ExchangeRatesCache::fetch();
     }
 
+    #[cfg(feature = "fetch-exchangerates")]
     pub fn set_exchange_rates(xml_content: &str) {
         ExchangeRatesCache::set_from_xml(xml_content);
     }

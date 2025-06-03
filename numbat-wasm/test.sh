@@ -1,3 +1,3 @@
 #!/bin/bash
 
-wasm-pack test --headless --firefox
+RUSTFLAGS='--cfg getrandom_backend="wasm_js"' wasm-pack test --headless --firefox
